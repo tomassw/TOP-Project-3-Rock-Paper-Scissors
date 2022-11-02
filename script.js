@@ -46,12 +46,31 @@ function playRound(playerSelection, computerSelection) {
 
 
   function game() {
+
+    let playerScore = 0;
+    let computerScore = 0;
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Enter your choice");
         const computerSelection = getComputerChoice();
 
-        console.log(playRound(playerSelection, computerSelection));
+        let result = playRound(playerSelection, computerSelection);
+
+
+        if (result == "You Won! Rock beats Scissors" || result == "You Won! Paper beat Rocks" || result == "You Won! Scissors beat Paper") {
+            playerScore++;
+        } 
+        else if (result === "TIE!") {
+            computerScore++;
+            playerScore++;
+        } 
+        else {
+            computerScore++;
+        }
+
+        console.log(result);
+        console.log(playerScore, computerScore);
     }
   }
+
 
  
