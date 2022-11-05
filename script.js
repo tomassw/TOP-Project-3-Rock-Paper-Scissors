@@ -73,19 +73,28 @@ function playRound(playerSelection, computerSelection) {
   }
 
 
+//Task 2
+
 const btn1 = document.querySelector('#btn1');
 const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
 
-btn1.addEventListener('click', () => {
-    alert("Hello World");
-});
+function event1() {
+    console.log(playRound('rock', getComputerChoice()));
+}
 
-btn2.addEventListener('click', () => {
-    alert("Hello World");
-});
+function event2() {
+    console.log(playRound('paper', getComputerChoice()));
+}
 
-btn3.addEventListener('click', () => {
-    alert("Hello World");
-});
+function event3() {
+    console.log(playRound('scissors', getComputerChoice()));
+}
+
+
+btn1.addEventListener('click', event1);
+btn2.addEventListener('click', event2);
+btn3.addEventListener('click', event3);
+
+
 
