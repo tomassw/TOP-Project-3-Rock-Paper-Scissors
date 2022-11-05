@@ -17,7 +17,7 @@ function playRound(playerSelection, computerSelection) {
 
     if (playerSelection == "scissors") {
         if (computerSelection == "paper") {
-            return "You Won! Scissors beat Paper";
+            return "You Won! Scissors beat Paper!";
         } 
         else if (computerSelection == "rock") {
             return "You Lose! Rock beats Scissors!";
@@ -26,16 +26,16 @@ function playRound(playerSelection, computerSelection) {
     }
     else if (playerSelection == "paper") {
         if (computerSelection == "rock") {
-            return "You Won! Paper beat Rocks";
+            return "You Won! Paper beat Rocks!";
         } 
         else if (computerSelection == "scissors") {
-            return "You Lose! Scissors beats Paper!";
+            return "You Lose! Scissors beat Paper!";
         }
         return "Tie!";
     }
     else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
-            return "You Won! Rock beats Scissors";
+            return "You Won! Rock beats Scissors!";
         } 
         else if (computerSelection == "paper") {
             return "You lose! Paper beats Rock!";
@@ -86,27 +86,81 @@ const btn3 = document.querySelector('#btn3');
 
 //Afisarea rezultatului
 const result = document.querySelector('.result');
+const score = document.querySelector('.scorecounter');
 
+let playerScore = 0;
+let computerScore = 0;
 //Adaptarea functiilor
 function event1() {
     result.textContent = playRound('rock', getComputerChoice());
-   
+
+    if (result.textContent === 'You Won! Rock beats Scissors!') playerScore++;
+   // if (result.textContent === 'Tie!') {playerScore++; computerScore++;}
+    if (result.textContent === 'You lose! Paper beats Rock!') computerScore++;
+
+    score.textContent = playerScore + ' - ' + computerScore;
+    if (playerScore + computerScore === 5) {
+        btn1.removeEventListener('click', event1);
+        btn2.removeEventListener('click', event2);
+        btn3.removeEventListener('click', event3);
+
+        
+        if (playerScore > computerScore) {
+            score.textContent = 'You won!';
+        }
+        else {
+            score.textContent = 'You lost!';
+        }
+    }
 }
 
 function event2() {
     result.textContent = playRound('paper', getComputerChoice());
-    
+
+    if (result.textContent === 'You Won! Paper beat Rocks!') playerScore++;
+   // if (result.textContent === 'Tie!') {playerScore++; computerScore++;}
+    if (result.textContent === 'You Lose! Scissors beat Paper!') computerScore++;
+
+    score.textContent = playerScore + ' - ' + computerScore;
+    if (playerScore + computerScore === 5) {
+        btn1.removeEventListener('click', event1);
+        btn2.removeEventListener('click', event2);
+        btn3.removeEventListener('click', event3);
+
+        
+        if (playerScore > computerScore) {
+            score.textContent = 'You won!';
+        }
+        else {
+            score.textContent = 'You lost!';
+        }
+    }
 }
 
 function event3() {
     result.textContent = playRound('scissors', getComputerChoice());
-    
-}
 
+    if (result.textContent === 'You Won! Scissors beat Paper!') playerScore++;
+   // if (result.textContent === 'Tie!') {playerScore++; computerScore++;}
+    if (result.textContent === 'You Lose! Rock beats Scissors!') computerScore++;
+
+    score.textContent = playerScore + ' - ' + computerScore;
+    if (playerScore + computerScore === 5) {
+        btn1.removeEventListener('click', event1);
+        btn2.removeEventListener('click', event2);
+        btn3.removeEventListener('click', event3);
+
+        if (playerScore > computerScore) {
+            score.textContent = 'You won!';
+        }
+        else {
+            score.textContent = 'You lost!';
+        }
+    }
+}
 
 btn1.addEventListener('click', event1);
 btn2.addEventListener('click', event2);
 btn3.addEventListener('click', event3);
-
 
 
