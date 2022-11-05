@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-
+/*
   function game() {
 
     let playerScore = 0;
@@ -71,24 +71,36 @@ function playRound(playerSelection, computerSelection) {
         console.log(playerScore, computerScore);
     }
   }
-
+*/
 
 //Task 2
 
+
+//Butoanele propriu zise
 const btn1 = document.querySelector('#btn1');
 const btn2 = document.querySelector('#btn2');
 const btn3 = document.querySelector('#btn3');
 
+//const rezultat = document.querySelector('.result');
+//console.log(result);
+
+//Afisarea rezultatului
+const result = document.querySelector('.result');
+
+//Adaptarea functiilor
 function event1() {
-    console.log(playRound('rock', getComputerChoice()));
+    result.textContent = playRound('rock', getComputerChoice());
+   
 }
 
 function event2() {
-    console.log(playRound('paper', getComputerChoice()));
+    result.textContent = playRound('paper', getComputerChoice());
+    
 }
 
 function event3() {
-    console.log(playRound('scissors', getComputerChoice()));
+    result.textContent = playRound('scissors', getComputerChoice());
+    
 }
 
 
